@@ -1,13 +1,14 @@
 { pkgs ? import <nixpkgs> { } }:
 
-let 
+let
   fhs = (pkgs.buildFHSEnv {
-  name = "myenv";
-  targetPkgs = (p: with p; [ bash htop ]);
-  runScript = "bash";
-});
+    name = "myenv";
+    targetPkgs = (p: with p; [ bash htop ]);
+    runScript = "bash";
+  });
 
-in pkgs.writeShellApplication {
+in
+pkgs.writeShellApplication {
   inherit (fhs) name;
   runtimeInputs = [ fhs ];
   text = ''
