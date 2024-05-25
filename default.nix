@@ -1,18 +1,22 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  fhs = (pkgs.buildFHSEnv {
-    name = "myenv";
-    targetPkgs = (p: with p; [ bash htop ]);
-    runScript = "bash";
-  });
+  fhs =
+    let name = "myenv";
+    in (pkgs.buildFHSEnv {
+      inherit name;
+      targetPkgs = (p: with p; [ bash htop ]);
+      runScript = "bash";
+    }) // {
+      meta.manProgram = "${name}";
+    };
 
 in
 pkgs.writeShellApplication {
   inherit (fhs) name;
   runtimeInputs = [ fhs ];
   text = ''
-    exec myenv
+    exec ${fhs.name}
   '';
 }
 
