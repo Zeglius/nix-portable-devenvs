@@ -1,11 +1,11 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, programs ? [ null ] }:
 
 let
   fhs =
     let name = "myenv";
     in (pkgs.buildFHSEnv {
       inherit name;
-      targetPkgs = (p: with p; [ bash htop ]);
+      targetPkgs = (p: (with p; [ bash ]) ++ programs);
       runScript = "bash";
     }) // {
       meta.manProgram = "${name}";

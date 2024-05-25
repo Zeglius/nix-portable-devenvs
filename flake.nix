@@ -13,6 +13,6 @@
     {
 
       packages.${system}.default =
-        (pkgs.callPackage ./default.nix { });
+        (pkgs.callPackage ./default.nix { programs = with pkgs; [ htop ]; });
     };
 }
