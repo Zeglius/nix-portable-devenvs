@@ -5,3 +5,6 @@ _default:
 
 bundle:
     nix bundle --bundler github:DavHau/nix-portable -o bundle
+
+fmt:
+    nixpkgs-fmt $(find ./ -name '*.nix')
