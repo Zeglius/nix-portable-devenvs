@@ -8,7 +8,7 @@ let
       targetPkgs = (p: (with p; [ bash ]) ++ programs);
       runScript = "bash";
     }) // {
-      meta.manProgram = "${name}";
+      meta.mainProgram = "${name}";
     };
 
 in
