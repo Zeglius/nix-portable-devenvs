@@ -11,8 +11,8 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      
-      packages.${system}.default = 
-        (pkgs.callPackage ./default.nix {  });
+
+      packages.${system}.default =
+        (pkgs.callPackage ./default.nix { });
     };
 }
