@@ -1,0 +1,7 @@
+{
+    "conventionalCommits.scopes": [
+        "flake.nix",
+        "justfile",
+        "default.nix"
+    ]
+}
