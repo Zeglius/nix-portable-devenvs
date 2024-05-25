@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { }, programs ? [ null ] }:
+{ pkgs ? import <nixpkgs> { }, lib, programs ? [ null ] }:
 
 let
   fhs =
@@ -14,9 +14,8 @@ let
 in
 pkgs.writeShellApplication {
   inherit (fhs) name;
-  runtimeInputs = [ fhs ];
   text = ''
-    exec ${fhs.name}
+    exec ${lib.getExe fhs}
   '';
 }
 
